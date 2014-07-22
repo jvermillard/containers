@@ -7,4 +7,6 @@ RUN cd /build/lualwm2m/build && cmake .. && make
 RUN ls -alh /build/lualwm2m/build
 RUN mkdir /lwm2m && cp /build/lualwm2m/build/*.so /lwm2m/ && cp /build/luadtls/build/dtls /lwm2m/dtls -r
 ADD client.lua /lwm2m/client.lua
-#ENTRYPOINT cd /lwm2m && lua5.1 ./client.lua
+ENV LUA_PATH ./?/init.lua;;
+WORKDIR /lwm2m
+ENTRYPOINT ["lua5.1", "client.lua"]

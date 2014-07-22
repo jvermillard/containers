@@ -1,4 +1,4 @@
-package.path = './?/init.lua;' .. package.path
+--package.path = './?/init.lua;' .. package.path
 local lwm2m = require 'lwm2m'
 local socket = require 'socket'
 local dtls = require 'dtls'

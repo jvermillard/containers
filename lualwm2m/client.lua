@@ -1,4 +1,3 @@
---package.path = './?/init.lua;' .. package.path
 local lwm2m = require 'lwm2m'
 local socket = require 'socket'
 local dtls = require 'dtls'
@@ -7,7 +6,7 @@ local udp = socket.udp();
 udp:setsockname('*', 5682)
 
 -- change UDP socket in DTLS socket
-dtls.wrap(udp,"PSK") -- ECC is managed too. (key is hard coded for now)
+dtls.wrap(udp, {security = "PSK", identity = arg[3], key = arg[4]})
 
 local deviceObj = {
   id = 3,

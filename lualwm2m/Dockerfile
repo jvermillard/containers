@@ -1,4 +1,4 @@
-FROM luadtls:latest
+FROM jvermillard/luadtls:latest
 MAINTAINER jvermillard@gmail.com
 RUN mkdir -p /build && cd /build && git clone https://github.com/sbernard31/lualwm2m.git lualwm2m && mkdir lualwm2m/build
 ADD gitmodules /build/lualwm2m/.gitmodules

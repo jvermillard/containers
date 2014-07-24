@@ -11,11 +11,13 @@ dtls.wrap(udp, {security = "PSK", identity = arg[3], key = arg[4]})
 
 local deviceObj = {
   id = 3,
-  [0]  = "Open Mobile Alliance",                   -- manufacturer
-  [1]  = "Lightweight M2M Client",                 -- model number
-  [2]  = "345000123",                              -- serial number
-  [3]  = "1.0",                                    -- firmware version
-  [13] = {read = function() return os.time() end}, -- current time
+  [0]  = "Open Mobile Alliance",                                       -- manufacturer
+  [1]  = "Lightweight M2M Client",                                     -- model number
+  [2]  = "345000123",                                                  -- serial number
+  [3]  = "1.0",                                                        -- firmware version
+  [4]  = {execute = function (obj) print ("Reboot!") end},             -- reboot   
+  [5]  = {execute = function (obj) print ("Factory reset!") end},      -- factory reset                                  
+  [13] = {read = function() return os.time() end},                     -- current time
 }
 
 print("endpoint: " .. arg[1] .. " - server host: " .. arg[2]);

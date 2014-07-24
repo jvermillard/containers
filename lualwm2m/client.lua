@@ -3,7 +3,8 @@ local socket = require 'socket'
 local dtls = require 'dtls'
 
 local udp = socket.udp();
-udp:setsockname('*', 5682)
+-- let the system choose an ephemeral port
+-- udp:setsockname('*', 5682)
 
 -- change UDP socket in DTLS socket
 dtls.wrap(udp, {security = "PSK", identity = arg[3], key = arg[4]})
